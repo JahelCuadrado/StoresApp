@@ -1,12 +1,13 @@
 package com.example.storesapp
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.storesapp.databinding.ItemStoreBinding
 
 class StoreAdapter (
-        private val stores : List<Store>,
+        private val stores : MutableList<Store>,
         private val listener : (Store) -> Unit
         ) : RecyclerView.Adapter<StoreAdapter.ViewHolder>() {
 
@@ -27,6 +28,13 @@ class StoreAdapter (
     }
 
     override fun getItemCount(): Int = stores.size
+
+    //TODO
+    @SuppressLint("NotifyDataSetChanged")
+    fun add(store: Store) {
+        stores.add(store)
+        notifyDataSetChanged()  //Esto cambia actualiza toda la lista, notifyItemChanged(position) actualizaria solo un elemento
+    }
 
 
     class ViewHolder(private val binding: ItemStoreBinding) : RecyclerView.ViewHolder(binding.root) {

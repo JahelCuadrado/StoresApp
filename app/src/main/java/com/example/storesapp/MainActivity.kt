@@ -12,14 +12,18 @@ class MainActivity : AppCompatActivity() {
     private lateinit var  gridLayout          : RecyclerView.LayoutManager
     private lateinit var  binding             : ActivityMainBinding
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        initRecycler()
+        binding.btnSave.setOnClickListener {
+            val store = Store(name = binding.etName.text.toString().trim())
+            storeAdapter.add(store)  //TODO
+            binding.etName.setText("")
+        }
 
+        initRecycler()
     }
 
     private fun initRecycler(){

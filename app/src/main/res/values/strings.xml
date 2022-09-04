@@ -3,4 +3,5 @@
     <string name="imagen_de_tienda">imagen de tienda</string>
     <string name="boton_add_tienda">Boton para añadir una tienda</string>
     <string name="nombre_de_la_tienda">Nombre de la tienda</string>
+    <string name="save">SAVE</string>
 </resources>
