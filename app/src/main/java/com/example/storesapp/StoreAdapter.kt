@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.storesapp.databinding.ItemStoreBinding
 
 class StoreAdapter (
-        private val stores : MutableList<Store>,
-        private val listener : (Store) -> Unit
+    private var stores : MutableList<StoreEntity>,
+    private val listener : (StoreEntity) -> Unit
         ) : RecyclerView.Adapter<StoreAdapter.ViewHolder>() {
 
 
@@ -29,18 +29,24 @@ class StoreAdapter (
 
     override fun getItemCount(): Int = stores.size
 
-    //TODO
     @SuppressLint("NotifyDataSetChanged")
-    fun add(store: Store) {
-        stores.add(store)
+    fun add(storeEntity: StoreEntity) {
+        stores.add(storeEntity)
         notifyDataSetChanged()  //Esto cambia actualiza toda la lista, notifyItemChanged(position) actualizaria solo un elemento
+    }
+
+    //TODO 12
+    @SuppressLint("NotifyDataSetChanged")
+    fun setStores(stores: MutableList<StoreEntity>) {
+        this.stores = stores  //sustituimos la lista
+        notifyDataSetChanged()  //notificamos los cambios
     }
 
 
     class ViewHolder(private val binding: ItemStoreBinding) : RecyclerView.ViewHolder(binding.root) {
-            fun bind(store : Store){
+            fun bind(storeEntity : StoreEntity){
                 with(binding){
-                    tvName.text = store.name
+                    tvName.text = storeEntity.name
                 }
             }
     }
