@@ -8,7 +8,6 @@ data class StoreEntity(
 
     @PrimaryKey(autoGenerate = true)  //TODO 3 Le asignamos una primary key
     var id       : Long    = 0,
-
     var name     : String,
     var phone    : String  = "",
     var website  : String  = "",

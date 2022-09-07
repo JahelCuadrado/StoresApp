@@ -7,11 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.storesapp.databinding.ItemStoreBinding
 
 class StoreAdapter (
-    private var stores : MutableList<StoreEntity>,
-    private val listener : (StoreEntity) -> Unit
+    private var stores          : MutableList<StoreEntity>,
+    private val listener        : (StoreEntity) -> Unit,
+    private val onFavoriteStore : (StoreEntity) -> Unit,  //TODO 14
+    private val onDeleteStore   : (StoreEntity) -> Unit  //TODO 14
         ) : RecyclerView.Adapter<StoreAdapter.ViewHolder>() {
-
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemStoreBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -19,11 +19,21 @@ class StoreAdapter (
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val binding = holder.binding()
         val store = stores[position]
         holder.bind(store)
 
-        holder.itemView.setOnClickListener {
-            listener(store)
+        with(holder.itemView){
+            setOnClickListener {
+                listener(store)
+            }
+            setOnLongClickListener {
+                onDeleteStore(store)
+                true  //  TODO #1 necesario para que funcionen los setonlongclicklistener
+            }
+        }
+        binding.cbFavorite.setOnClickListener {
+            onFavoriteStore(store)
         }
     }
 
@@ -42,12 +52,32 @@ class StoreAdapter (
         notifyDataSetChanged()  //notificamos los cambios
     }
 
+    fun update(store: StoreEntity) {
+        val index = stores.indexOf(store)
+        if (index!=-1){
+            stores[index] = store
+            notifyItemChanged(index)
+        }
+    }
+
+    fun delete(store: StoreEntity) {
+        val index = stores.indexOf(store)
+        if (index!=-1){
+            stores.removeAt(index)
+            notifyItemRemoved(index) // TODO #2
+        }
+    }
 
     class ViewHolder(private val binding: ItemStoreBinding) : RecyclerView.ViewHolder(binding.root) {
             fun bind(storeEntity : StoreEntity){
                 with(binding){
                     tvName.text = storeEntity.name
+                    cbFavorite.isChecked = storeEntity.favorite
                 }
+            }
+
+            fun binding(): ItemStoreBinding{
+                return binding
             }
     }
 

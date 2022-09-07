@@ -11,7 +11,7 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         //noinspection JcenterRepositoryObsolete
-        jcenter()  //TODO 10
+        jcenter()  //TODO 10 Necesario para que funcione la libreria anko
     }
 }
 rootProject.name = "StoresApp"

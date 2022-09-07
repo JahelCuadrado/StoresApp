@@ -40,13 +40,40 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initRecycler(){
-        storeAdapter  = StoreAdapter(mutableListOf()){}
+        storeAdapter  = StoreAdapter(mutableListOf(), ::listener, ::onFavoriteStore, ::onDeleteStore) //TODO 16
         gridLayout    = GridLayoutManager(this, 2)
         getStores()  //TODO 13
         binding.recycler.apply {
             setHasFixedSize(true)
             layoutManager = gridLayout
             adapter = storeAdapter
+        }
+    }
+
+
+    private fun onDeleteStore(store: StoreEntity){
+        doAsync {
+            StoreApplication.database.storeDao().deleteStore(store)
+            uiThread {
+                storeAdapter.delete(store)
+            }
+        }
+
+    }
+
+
+    private fun listener(store: StoreEntity){
+
+    }
+
+
+    private fun onFavoriteStore(store: StoreEntity){  //TODO 17
+        store.favorite = !store.favorite
+        doAsync {
+            StoreApplication.database.storeDao().updateStore(store)
+            uiThread {  //con esto volvemos al hilo principal, volvemos al hilo principal porque vamos a actualizar la UI
+                storeAdapter.update(store)  //TODO 18
+            }
         }
     }
 
