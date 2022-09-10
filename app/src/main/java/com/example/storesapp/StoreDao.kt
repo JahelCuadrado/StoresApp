@@ -8,10 +8,10 @@ interface StoreDao {
     fun getAllStores() : MutableList<StoreEntity>
 
     @Query("SELECT * FROM StoreEntity WHERE id = :id")  //Con los 2 puntos indico que me refiero a la variable id que llega por parámetro
-    fun getById(id: Int) : StoreEntity
+    fun getById(id: Long) : StoreEntity
 
     @Insert
-    fun addStore(storeEntity: StoreEntity)
+    fun addStore(storeEntity: StoreEntity) : Long
 
     @Update
     fun updateStore(storeEntity: StoreEntity)

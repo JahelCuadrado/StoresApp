@@ -4,11 +4,12 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.storesapp.databinding.ItemStoreBinding
 
 class StoreAdapter (
     private var stores          : MutableList<StoreEntity>,
-    private val listener        : (StoreEntity) -> Unit,
+    private val listener        : (Long)        -> Unit,
     private val onFavoriteStore : (StoreEntity) -> Unit,  //TODO 14
     private val onDeleteStore   : (StoreEntity) -> Unit  //TODO 14
         ) : RecyclerView.Adapter<StoreAdapter.ViewHolder>() {
@@ -25,7 +26,7 @@ class StoreAdapter (
 
         with(holder.itemView){
             setOnClickListener {
-                listener(store)
+                listener(store.id)
             }
             setOnLongClickListener {
                 onDeleteStore(store)
@@ -41,8 +42,10 @@ class StoreAdapter (
 
     @SuppressLint("NotifyDataSetChanged")
     fun add(storeEntity: StoreEntity) {
-        stores.add(storeEntity)
-        notifyDataSetChanged()  //Esto cambia actualiza toda la lista, notifyItemChanged(position) actualizaria solo un elemento
+        if (!stores.contains(storeEntity)) {
+            stores.add(storeEntity)
+            notifyItemInserted(stores.size-1)
+        }
     }
 
     //TODO 12
@@ -71,8 +74,15 @@ class StoreAdapter (
     class ViewHolder(private val binding: ItemStoreBinding) : RecyclerView.ViewHolder(binding.root) {
             fun bind(storeEntity : StoreEntity){
                 with(binding){
-                    tvName.text = storeEntity.name
+                    tvName.text          = storeEntity.name
                     cbFavorite.isChecked = storeEntity.favorite
+                    Glide.with(tvName.context)
+                        .load(storeEntity.photoUrl)
+                        .centerCrop()
+                        .into(binding.imgPhoto)
+
+
+
                 }
             }
 

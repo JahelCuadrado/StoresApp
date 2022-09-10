@@ -5,6 +5,8 @@
 
 <!--    TODO 7 : declaramos nuestra bbdd para que no de error en la primera linea de application -->
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".StoreApplication"
         android:allowBackup="true"

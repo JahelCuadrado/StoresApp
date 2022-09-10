@@ -4,4 +4,8 @@
     <string name="boton_add_tienda">Boton para añadir una tienda</string>
     <string name="nombre_de_la_tienda">Nombre de la tienda</string>
     <string name="save">SAVE</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="url_del_sitio_web">Url del sitio Web</string>
+    <string name="save_menu">Save</string>
 </resources>

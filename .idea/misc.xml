@@ -3,9 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Jahel/AndroidStudioProjects/StoresApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.149" />
+        <entry key="..\:/Users/Jahel/AndroidStudioProjects/StoresApp/app/src/main/res/drawable/ic_add_business.xml" value="0.149" />
+        <entry key="..\:/Users/Jahel/AndroidStudioProjects/StoresApp/app/src/main/res/drawable/ic_check.xml" value="0.149" />
+        <entry key="..\:/Users/Jahel/AndroidStudioProjects/StoresApp/app/src/main/res/drawable/ic_favorite.xml" value="0.149" />
+        <entry key="..\:/Users/Jahel/AndroidStudioProjects/StoresApp/app/src/main/res/drawable/ic_favorite_border.xml" value="0.149" />
+        <entry key="..\:/Users/Jahel/AndroidStudioProjects/StoresApp/app/src/main/res/drawable/ic_image.xml" value="0.149" />
+        <entry key="..\:/Users/Jahel/AndroidStudioProjects/StoresApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.149" />
+        <entry key="..\:/Users/Jahel/AndroidStudioProjects/StoresApp/app/src/main/res/drawable/ic_link.xml" value="0.149" />
+        <entry key="..\:/Users/Jahel/AndroidStudioProjects/StoresApp/app/src/main/res/drawable/ic_store.xml" value="0.149" />
+        <entry key="..\:/Users/Jahel/AndroidStudioProjects/StoresApp/app/src/main/res/drawable/ic_telefono_contacto.xml" value="0.149" />
         <entry key="..\:/Users/Jahel/AndroidStudioProjects/StoresApp/app/src/main/res/drawable/states_cb_favorite.xml" value="0.266" />
         <entry key="..\:/Users/Jahel/AndroidStudioProjects/StoresApp/app/src/main/res/layout/activity_main.xml" value="0.21" />
+        <entry key="..\:/Users/Jahel/AndroidStudioProjects/StoresApp/app/src/main/res/layout/fragment_edit_store.xml" value="0.1919398907103825" />
         <entry key="..\:/Users/Jahel/AndroidStudioProjects/StoresApp/app/src/main/res/layout/item_store.xml" value="0.21" />
+        <entry key="..\:/Users/Jahel/AndroidStudioProjects/StoresApp/app/src/main/res/menu/manu_save.xml" value="0.22828947368421051" />
       </map>
     </option>
   </component>

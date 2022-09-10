@@ -11,5 +11,6 @@ data class StoreEntity(
     var name     : String,
     var phone    : String  = "",
     var website  : String  = "",
+    var photoUrl : String,
     var favorite : Boolean = false
 )
